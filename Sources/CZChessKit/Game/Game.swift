@@ -231,6 +231,12 @@ public struct Game {
         status = .gameOver(result: .win(color.opposite, reason: .timeout))
     }
 
+    /// Draw by agreement
+    public mutating func drawByAgreement() {
+        guard status == .active else { return }
+        status = .gameOver(result: .draw(.agreement))
+    }
+
     // MARK: - History navigation
 
     /// Go to specific move (0 = to start, moves.count = end)
